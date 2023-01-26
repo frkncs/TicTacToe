@@ -1,15 +1,20 @@
 #include <iostream>
+#include <string>
+
+#include "../headers/WinnerChecker.h"
 
 // https://github.com/haarcuba/cpp-text-table
 #include "../headers/TextTable.h"
 
-using namespace std;
-
-void InitializeTable(string array[3][3]);
+void InitializeTable(std::string (*array)[3]);
 
 int main()
 {
-	string inputs[3][3] = { {" ", " ", " "} };
+	std::string(*inputs)[3] = new std::string[3][3]{
+		" ",
+		" ",
+		" "
+	};
 
 	short row, column;
 	bool isPlayerOne = true;
@@ -20,11 +25,11 @@ int main()
 	{
 		char character = isPlayerOne ? 'X' : 'O';
 
-		cout << endl << "Player " << (isPlayerOne ? "1 (X)" : "2 (O)") << endl << "Row : ";
-		cin >> row;
+		std::cout << "\nPlayer " << (isPlayerOne ? "1 (X)" : "2 (O)") << "\nRow : ";
+		std::cin >> row;
 
-		cout << "Column: ";
-		cin >> column;
+		std::cout << "Column: ";
+		std::cin >> column;
 
 		if (inputs[row][column] != "" && inputs[row][column] != " ")
 		{
@@ -32,7 +37,7 @@ int main()
 
 			InitializeTable(inputs);
 
-			cout << endl << "Can't place here!" << endl;
+			std::cout << "\nCan't place here!\n";
 			continue;
 		}
 
@@ -40,13 +45,24 @@ int main()
 
 		InitializeTable(inputs);
 
+		if (WinnerChecker::CheckWinner(inputs, &character))
+		{
+			std::cout << "\n" << character << " Wins!\n";
+
+			break;
+		}
+
 		isPlayerOne = !isPlayerOne;
 	}
+
+	delete[] inputs;
+
+	std::cin.get();
 
     return 0;
 }
 
-void InitializeTable(string inputs[3][3])
+void InitializeTable(std::string (*inputs)[3]) // To pass 2 dimensional array to a function
 {
 	TextTable tt = TextTable('-', '|', '+');
 
@@ -61,5 +77,5 @@ void InitializeTable(string inputs[3][3])
 
 	system("cls");
 
-	cout << tt;
+	std::cout << tt;
 }

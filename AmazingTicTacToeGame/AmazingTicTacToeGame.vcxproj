@@ -129,6 +129,10 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="headers\TextTable.h" />
+    <ClCompile Include="src\WinnerChecker.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\WinnerChecker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

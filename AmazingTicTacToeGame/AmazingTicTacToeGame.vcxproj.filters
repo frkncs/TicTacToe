@@ -21,5 +21,13 @@
     <ClCompile Include="headers\TextTable.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\WinnerChecker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\WinnerChecker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
