@@ -1,7 +1,7 @@
 #include <iostream>
 
 // https://github.com/haarcuba/cpp-text-table
-#include "TextTable.h"
+#include "../headers/TextTable.h"
 
 using namespace std;
 
